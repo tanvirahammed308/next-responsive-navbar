@@ -1,6 +1,7 @@
 
 "use client";
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import React, { useState } from 'react'
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
@@ -10,6 +11,7 @@ const Navbar = () => {
     const handleSmallerSceenNavigation=()=>{
         setMenuIcon(!menuIcon)
     }
+    const pathName=usePathname()
   return (
     <header className="bg-slate-400 text-[#ceff00] w-full ease-in duration-300 fixed top-0 left-0 z-10">
       <nav className="max-w-[1366px] mx-auto h-[100px] flex justify-between items-center p-4">
@@ -23,10 +25,10 @@ const Navbar = () => {
         {/* for larger screen  */}
         <ul className="hidden md:flex uppercase font-semibold text-1xl lg:text-[20px] text-slate-800">
           <li className="mr-4 lg:mr-8 hover:text-[#ceff00] ">
-            <Link href={"/"}>home</Link>
+            <Link href={"/"} className={`${pathName === '/' ? 'text-rose-800' : 'text-slate-800'}`}>home</Link>
           </li>
           <li className="mr-4 lg:mr-8 hover:text-[#ceff00] ">
-            <Link href={"/about"}>about</Link>
+            <Link href={"/about"} className={`${pathName === '/about' ? 'text-red-600' : 'text-slate-800'}`}>about</Link>
           </li>
           <li className=" lg:mr-8 hover:text-[#ceff00] ">
             <Link href={"/contact"}>contact</Link>
